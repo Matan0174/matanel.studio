@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    padding: 40px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header {
+    text-align: center;
+    margin-top: 50px;
+}

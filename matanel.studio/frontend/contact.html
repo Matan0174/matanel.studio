@@ -2,26 +2,46 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>צור קשר - אולפן הקלטות</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צור קשר | Matanel Studio</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<h2>צור קשר</h2>
+    <section>
+        <div class="container">
+            <div class="card">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2>צור קשר</h2>
+                    <p>מלא את הפרטים ונחזור אליך בהקדם</p>
+                </div>
 
-<form id="contactForm">
-    <label>שם:</label>
-    <input type="text" name="name" required>
+                <form id="contactForm">
+                    <div>
+                        <label>שם מלא</label>
+                        <input type="text" name="name" required placeholder="השם שלך...">
+                    </div>
 
-    <label>טלפון:</label>
-    <input type="text" name="phone" required>
+                    <div>
+                        <label>טלפון</label>
+                        <input type="tel" name="phone" required placeholder="050-0000000">
+                    </div>
 
-    <label>הודעה:</label>
-    <textarea name="message" required></textarea>
+                    <div>
+                        <label>הודעה / פרטים על הפרויקט</label>
+                        <textarea name="message" required placeholder="ספר לנו על הפרויקט שלך..."></textarea>
+                    </div>
 
-    <button type="submit" class="btn">שלח</button>
-</form>
+                    <button type="submit" class="btn" style="width: 100%; text-align: center;">שלח הודעה</button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="index.html" style="color: #666; text-decoration: none; font-size: 0.9rem;">חזרה לדף הבית</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="assets/script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>

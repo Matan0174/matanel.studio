@@ -7,7 +7,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY . /usr/share/nginx/html
 
 # הגדרת port דינמית ל-Cloud Run
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=80
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

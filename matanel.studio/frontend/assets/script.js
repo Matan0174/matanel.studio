@@ -1,4 +1,5 @@
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
+// שליחת טופס יצירת קשר
+document.getElementById("contactForm")?.addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -10,4 +11,29 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
     const result = await response.json();
     alert(result.message);
+});
+
+
+// ===============================
+// תפריט צד (☰ ➜ ✖ + overlay)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const nav     = document.getElementById("side-menu");
+    const overlay = document.getElementById("overlay");
+
+    function toggleMenu() {
+        const isActive = nav.classList.toggle("active");
+        overlay.classList.toggle("active");
+        menuBtn.classList.toggle("active");
+
+        // שינוי סימן ☰ / ✖
+        menuBtn.textContent = isActive ? "✖" : "☰";
+    }
+
+    // פתיחה/סגירה בלחיצה על הכפתור
+    menuBtn?.addEventListener("click", toggleMenu);
+
+    // סגירה בלחיצה על הרקע
+    overlay?.addEventListener("click", toggleMenu);
 });

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Form
-from models.contact_model import ContactForm
+from utils import send_telegram_message, send_email_notification
 
 contact_router = APIRouter(prefix="/contact", tags=["Contact"])
 
@@ -9,9 +9,15 @@ def submit_contact(
     phone: str = Form(...),
     message: str = Form(...)
 ):
-    form = ContactForm(name=name, phone=phone, message=message)
+    print("\n--- New Contact Form ---")
+    print("Name:", name)
+    print("Phone:", phone)
+    print("Message:", message)
 
-    # אפשר להוסיף: שמירה בבסיס נתונים / שליחת מייל
-    print("📩 Contact form received:", form)
+    # שליחת מייל
+    send_email_notification(name, phone, message)
 
-    return {"status": "success", "message": "Your message has been received"}
+    # שליחת התראה לטלגרם
+    send_telegram_message(name, phone, message)
+
+    return {"status": "success", "message": "Your message was received."}

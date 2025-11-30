@@ -3,7 +3,7 @@ from utils import send_telegram_message, send_email_notification
 
 contact_router = APIRouter(prefix="/contact", tags=["Contact"])
 
-@contact_router.post("/")
+@contact_router.post("")
 def submit_contact(
     name: str = Form(...),
     phone: str = Form(...),

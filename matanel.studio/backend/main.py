@@ -13,9 +13,11 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # הוספת הראוטרים
 app.include_router(contact_router)
@@ -24,3 +26,7 @@ app.include_router(services_router)
 @app.get("/")
 def home():
     return {"message": "Recording Studio API is running."}
+
+@app.options("/contact")
+def options_contact():
+    return {}

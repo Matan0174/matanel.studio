@@ -4,13 +4,25 @@ document.getElementById("contactForm")?.addEventListener("submit", async functio
 
     const formData = new FormData(this);
 
-    const response = await fetch("https://matanel-studio-79613215467.us-central1.run.app/contact", {
-        method: "POST",
-        body: formData
-    });
+    try {
+        const response = await fetch("https://matanel-studio-79613215467.us-central1.run.app/contact", {
+            method: "POST",
+            body: formData
+        });
 
-    const result = await response.json();
-    alert(result.message);
+        // אם השרת לא ענה 200–299
+        if (!response.ok) {
+            const text = await response.text();  // לפעמים Cloud Run מחזיר HTML ולא JSON
+            alert("שגיאה מהשרת:\n" + text);
+            return;
+        }
+
+        const data = await response.json();
+
+        alert(data.message || "ההודעה נשלחה בהצלחה!");
+    } catch (err) {
+        alert("שגיאת רשת: " + err.message + "\n\nייתכן שזו בעיית CORS.");
+    }
 });
 
 

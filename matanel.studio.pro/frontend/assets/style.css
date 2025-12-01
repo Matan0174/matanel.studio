@@ -83,7 +83,7 @@ header {
     text-align: center;
 
     background: radial-gradient(circle at center, rgba(26, 31, 58, 0.4) 0%, rgba(10, 14, 39, 0.95) 100%),
-                url("studio_bg.jpg");
+                url("photos/studio_bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

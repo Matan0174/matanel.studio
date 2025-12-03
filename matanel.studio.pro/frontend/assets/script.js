@@ -1,51 +1,124 @@
-// שליחת טופס יצירת קשר
-document.getElementById("contactForm")?.addEventListener("submit", async function(e) {
+// ===============================
+// CONFIGURATION
+// ===============================
+const API_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8000"
+    : "https://matanel-studio-backend-79613215467.us-central1.run.app";
+
+// ===============================
+// CONTACT FORM SUBMISSION
+// ===============================
+document
+  .getElementById("contactForm")
+  ?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
 
     try {
-        const response = await fetch("https://matanel-studio-backend-79613215467.us-central1.run.app/contact", {
-            method: "POST",
-            body: formData
-        });
+      const response = await fetch(`${API_URL}/contact`, {
+        method: "POST",
+        body: formData,
+      });
 
-        // אם השרת לא ענה 200–299
-        if (!response.ok) {
-            const text = await response.text();  // לפעמים Cloud Run מחזיר HTML ולא JSON
-            alert("שגיאה מהשרת:\n" + text);
-            return;
-        }
+      if (!response.ok) {
+        const text = await response.text();
+        alert("שגיאה מהשרת:\n" + text);
+        return;
+      }
 
-        const data = await response.json();
-
-        alert(data.message || "ההודעה נשלחה בהצלחה!");
+      const data = await response.json();
+      alert(data.message || "ההודעה נשלחה בהצלחה!");
+      this.reset(); // ניקוי הטופס
     } catch (err) {
-        alert("שגיאת רשת: " + err.message + "\n\nייתכן שזו בעיית CORS.");
+      alert("שגיאת רשת: " + err.message);
     }
-});
-
+  });
 
 // ===============================
-// תפריט צד (☰ ➜ ✖ + overlay)
+// MENU & NAVIGATION
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("menu-btn");
-    const nav     = document.getElementById("side-menu");
-    const overlay = document.getElementById("overlay");
+  const menuBtn = document.getElementById("menu-btn");
+  const nav = document.getElementById("side-menu");
+  const overlay = document.getElementById("overlay");
 
-    function toggleMenu() {
-        const isActive = nav.classList.toggle("active");
-        overlay.classList.toggle("active");
-        menuBtn.classList.toggle("active");
+  function toggleMenu() {
+    const isActive = nav.classList.toggle("active");
+    overlay.classList.toggle("active");
+    menuBtn.classList.toggle("active");
+    menuBtn.textContent = isActive ? "✖" : "☰";
+  }
 
-        // שינוי סימן ☰ / ✖
-        menuBtn.textContent = isActive ? "✖" : "☰";
+  menuBtn?.addEventListener("click", toggleMenu);
+  overlay?.addEventListener("click", toggleMenu);
+});
+
+// ===============================
+// SCROLL REVEAL ANIMATION
+// ===============================
+const observerOptions = {
+  threshold: 0.15,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
     }
+  });
+}, observerOptions);
 
-    // פתיחה/סגירה בלחיצה על הכפתור
-    menuBtn?.addEventListener("click", toggleMenu);
+document.querySelectorAll(".reveal").forEach((el) => {
+  observer.observe(el);
+});
 
-    // סגירה בלחיצה על הרקע
-    overlay?.addEventListener("click", toggleMenu);
+// ===============================
+// LIGHTBOX (GALLERY)
+// ===============================
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.getElementById("lightbox-close");
+
+document.querySelectorAll(".gallery-item img").forEach((img) => {
+  img.addEventListener("click", () => {
+    if (lightbox && lightboxImg) {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    }
+  });
+});
+
+lightboxClose?.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+lightbox?.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove("active");
+  }
+});
+
+// ===============================
+// AUDIO PLAYER (SIMPLE TOGGLE)
+// ===============================
+document.querySelectorAll(".play-btn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const isPlaying = this.textContent === "⏸";
+
+    // Reset all buttons
+    document
+      .querySelectorAll(".play-btn")
+      .forEach((b) => (b.textContent = "▶"));
+
+    if (!isPlaying) {
+      this.textContent = "⏸";
+      // Here you would add actual audio playing logic
+      console.log("Playing track...");
+    } else {
+      console.log("Paused track...");
+    }
+  });
 });

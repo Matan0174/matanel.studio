@@ -104,21 +104,76 @@ lightbox?.addEventListener("click", (e) => {
 // ===============================
 // AUDIO PLAYER (SIMPLE TOGGLE)
 // ===============================
-document.querySelectorAll(".play-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const isPlaying = this.textContent === "⏸";
+// ===============================
+// AUDIO PLAYER (FULL CONTROLS)
+// ===============================
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+}
 
-    // Reset all buttons
-    document
-      .querySelectorAll(".play-btn")
-      .forEach((b) => (b.textContent = "▶"));
+document.querySelectorAll(".audio-player-container").forEach((container) => {
+  const btn = container.querySelector(".play-btn");
+  const audio = container.querySelector("audio");
+  const seekBar = container.querySelector(".seek-bar");
+  const currentTimeEl = container.querySelector(".current-time");
+  const durationEl = container.querySelector(".duration");
+
+  if (!audio || !btn || !seekBar) return;
+
+  // Update duration when metadata loads
+  const setDuration = () => {
+    seekBar.max = Math.floor(audio.duration);
+    durationEl.textContent = formatTime(audio.duration);
+  };
+
+  if (audio.readyState > 0) {
+    setDuration();
+  } else {
+    audio.addEventListener("loadedmetadata", setDuration);
+  }
+
+  // Update seek bar and time as audio plays
+  audio.addEventListener("timeupdate", () => {
+    seekBar.value = Math.floor(audio.currentTime);
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  });
+
+  // Seek functionality
+  seekBar.addEventListener("input", () => {
+    audio.currentTime = seekBar.value;
+  });
+
+  // Play/Pause Toggle
+  btn.addEventListener("click", () => {
+    const isPlaying = !audio.paused;
+
+    // Pause all other players
+    document.querySelectorAll("audio").forEach((a) => {
+      if (a !== audio) {
+        a.pause();
+        a.currentTime = 0; // Optional: reset others
+        // Reset other buttons
+        const otherContainer = a.closest(".audio-player-container");
+        const otherBtn = otherContainer?.querySelector(".play-btn");
+        if (otherBtn) otherBtn.textContent = "▶";
+      }
+    });
 
     if (!isPlaying) {
-      this.textContent = "⏸";
-      // Here you would add actual audio playing logic
-      console.log("Playing track...");
+      audio.play().catch((err) => console.error("Playback error:", err));
+      btn.textContent = "⏸";
     } else {
-      console.log("Paused track...");
+      audio.pause();
+      btn.textContent = "▶";
     }
+  });
+
+  // Reset button when audio ends
+  audio.addEventListener("ended", () => {
+    btn.textContent = "▶";
+    seekBar.value = 0;
+    currentTimeEl.textContent = "0:00";
   });
 });

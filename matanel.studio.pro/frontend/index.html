@@ -35,6 +35,12 @@
         <a class="btn" href="contact.html">הזמן סשן עכשיו</a>
     </div>
 
+    <div class="scroll-down">
+        <div class="mouse">
+            <div class="wheel"></div>
+        </div>
+        <span>גלול למטה</span>
+    </div>
 </header>
 
 <!-- שירותים -->
@@ -56,19 +62,36 @@
         <h2>תיק עבודות</h2>
         <p>האזינו להפקות שנוצרו אצלנו באולפן</p>
         
-        <div class="audio-player">
+        <div class="audio-player-container">
             <button class="play-btn">▶</button>
-            <div class="track-info">
-                <span class="track-title">שיר מקורי - הפקה מלאה</span>
-                <span class="track-artist">אמן: יהודה כהן</span>
+            <audio src="assets/audio/song1.mp3"></audio>
+            <div class="player-content">
+                <div class="track-info">
+                    <span class="track-title">שיר מקורי - הפקה מלאה</span>
+                    <span class="track-artist">אמן: יהודה כהן</span>
+                </div>
+                <div class="progress-container">
+                    <span class="current-time">0:00</span>
+                    <input type="range" class="seek-bar" value="0" max="100">
+                    <span class="duration">0:00</span>
+                </div>
             </div>
         </div>
 
-        <div class="audio-player">
+        <div class="audio-player-container">
             <button class="play-btn">▶</button>
-            <div class="track-info">
-                <span class="track-title">קאבר חתונה - פסנתר ושירה</span>
-                <span class="track-artist">אמן: איתמר לוי</span>
+            <audio src="assets/audio/song2.mp3"></audio>
+
+            <div class="player-content">
+                <div class="track-info">
+                    <span class="track-title">קאבר חתונה - פסנתר ושירה</span>
+                    <span class="track-artist">אמן: איתמר לוי</span>
+                </div>
+                <div class="progress-container">
+                    <span class="current-time">0:00</span>
+                    <input type="range" class="seek-bar" value="0" max="100">
+                    <span class="duration">0:00</span>
+                </div>
             </div>
         </div>
     </div>

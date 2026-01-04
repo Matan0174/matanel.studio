@@ -107,73 +107,166 @@ lightbox?.addEventListener("click", (e) => {
 // ===============================
 // AUDIO PLAYER (FULL CONTROLS)
 // ===============================
-function formatTime(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-}
+// ===============================
+// AUDIO PLAYER (WAVESURFER)
+// ===============================
+const players = [];
 
 document.querySelectorAll(".audio-player-container").forEach((container) => {
-  const btn = container.querySelector(".play-btn");
-  const audio = container.querySelector("audio");
-  const seekBar = container.querySelector(".seek-bar");
+  const audioUrl = container.getAttribute("data-audio");
+  const playBtn = container.querySelector(".play-btn");
+  const waveformContainer = container.querySelector(".waveform");
   const currentTimeEl = container.querySelector(".current-time");
   const durationEl = container.querySelector(".duration");
 
-  if (!audio || !btn || !seekBar) return;
+  if (!waveformContainer || !audioUrl) return;
 
-  // Update duration when metadata loads
-  const setDuration = () => {
-    seekBar.max = Math.floor(audio.duration);
-    durationEl.textContent = formatTime(audio.duration);
+  // Initialize WaveSurfer
+  const wavesurfer = WaveSurfer.create({
+    container: waveformContainer,
+    waveColor: "rgba(255, 255, 255, 0.2)",
+    progressColor: "#d4af37", // Gold accent color
+    cursorColor: "rgba(255, 255, 255, 0.5)",
+    barWidth: 2,
+    barRadius: 2,
+    responsive: true,
+    height: 60,
+    normalize: true,
+    partialRender: true,
+  });
+
+  // Load Audio
+  wavesurfer.load(audioUrl);
+
+  // Store instance
+  players.push(wavesurfer);
+
+  // Format Time Helper
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  if (audio.readyState > 0) {
-    setDuration();
-  } else {
-    audio.addEventListener("loadedmetadata", setDuration);
-  }
-
-  // Update seek bar and time as audio plays
-  audio.addEventListener("timeupdate", () => {
-    seekBar.value = Math.floor(audio.currentTime);
-    currentTimeEl.textContent = formatTime(audio.currentTime);
+  // Events
+  wavesurfer.on("ready", () => {
+    durationEl.textContent = formatTime(wavesurfer.getDuration());
   });
 
-  // Seek functionality
-  seekBar.addEventListener("input", () => {
-    audio.currentTime = seekBar.value;
+  wavesurfer.on("audioprocess", () => {
+    currentTimeEl.textContent = formatTime(wavesurfer.getCurrentTime());
   });
 
-  // Play/Pause Toggle
-  btn.addEventListener("click", () => {
-    const isPlaying = !audio.paused;
+  wavesurfer.on("finish", () => {
+    playBtn.textContent = "▶";
+  });
+
+  // Play/Pause Button Logic
+  playBtn.addEventListener("click", () => {
+    const isPlaying = wavesurfer.isPlaying();
 
     // Pause all other players
-    document.querySelectorAll("audio").forEach((a) => {
-      if (a !== audio) {
-        a.pause();
-        a.currentTime = 0; // Optional: reset others
-        // Reset other buttons
-        const otherContainer = a.closest(".audio-player-container");
-        const otherBtn = otherContainer?.querySelector(".play-btn");
-        if (otherBtn) otherBtn.textContent = "▶";
+    players.forEach((p) => {
+      if (p !== wavesurfer) {
+        p.pause();
+        // Reset button of other players
+        const otherContainer = p.getWrapper().closest(".audio-player-container");
+        if (otherContainer) {
+          otherContainer.querySelector(".play-btn").textContent = "▶";
+        }
       }
     });
 
-    if (!isPlaying) {
-      audio.play().catch((err) => console.error("Playback error:", err));
-      btn.textContent = "⏸";
+    if (isPlaying) {
+      wavesurfer.pause();
+      playBtn.textContent = "▶";
     } else {
-      audio.pause();
-      btn.textContent = "▶";
+      wavesurfer.play();
+      playBtn.textContent = "⏸";
     }
   });
 
-  // Reset button when audio ends
-  audio.addEventListener("ended", () => {
-    btn.textContent = "▶";
-    seekBar.value = 0;
-    currentTimeEl.textContent = "0:00";
+  // Interaction with waveform update button state if clicked directly
+  wavesurfer.on("play", () => {
+    playBtn.textContent = "⏸";
   });
+  
+  wavesurfer.on("pause", () => {
+    playBtn.textContent = "▶";
+  });
+});
+
+// ===============================
+// 3D TILT EFFECT (PREMIUM FEEL)
+// ===============================
+class VanillaTilt {
+  constructor(element) {
+    this.element = element;
+    this.width = this.element.offsetWidth;
+    this.height = this.element.offsetHeight;
+    this.left = this.element.offsetLeft;
+    this.top = this.element.offsetTop;
+    this.transitionTimeout = null;
+
+    this.settings = {
+      max: 15, // max tilt rotation (degrees)
+      perspective: 1000,
+      scale: 1.05, // zoom on hover
+      speed: 1000, // transition speed
+    };
+
+    this.init();
+  }
+
+  init() {
+    this.element.style.transformStyle = "preserve-3d";
+    this.element.style.transform = `perspective(${this.settings.perspective}px)`;
+
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    this.element.addEventListener("mouseenter", this.onMouseEnter.bind(this));
+    this.element.addEventListener("mousemove", this.onMouseMove.bind(this));
+    this.element.addEventListener("mouseleave", this.onMouseLeave.bind(this));
+  }
+
+  onMouseEnter() {
+    this.element.style.transition = `transform 0.1s ease`;
+    this.updateDimensions();
+  }
+
+  onMouseMove(event) {
+    const x = (event.clientX - this.left) / this.width;
+    const y = (event.clientY - this.top) / this.height;
+
+    const tiltX = (this.settings.max * -1 / 2 + x * this.settings.max).toFixed(2);
+    const tiltY = (y * this.settings.max - this.settings.max / 2).toFixed(2);
+
+    // Calculate rotation
+    // Note: RotateX based on Y Position, RotateY based on X Position
+    const rotateX =  -1 * (y - 0.5) * this.settings.max * 2; 
+    const rotateY = (x - 0.5) * this.settings.max * 2;
+
+    this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${this.settings.scale}, ${this.settings.scale}, ${this.settings.scale})`;
+  }
+
+  onMouseLeave() {
+    this.element.style.transition = `transform ${this.settings.speed}ms ease`;
+    this.element.style.transform = `perspective(${this.settings.perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  }
+
+  updateDimensions() {
+    const rect = this.element.getBoundingClientRect();
+    this.width = rect.width;
+    this.height = rect.height;
+    this.left = rect.left;
+    this.top = rect.top;
+  }
+}
+
+// Initialize Tilt on Cards
+document.addEventListener("DOMContentLoaded", () => {
+  const tiltElements = document.querySelectorAll(".service-card, .gallery-item, .about-card, .testimonial-card, .video-item, .card");
+  tiltElements.forEach((el) => new VanillaTilt(el));
 });

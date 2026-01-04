@@ -63,35 +63,34 @@
         <h2>תיק עבודות</h2>
         <p>האזינו להפקות שנוצרו אצלנו באולפן</p>
         
-        <div class="audio-player-container">
+        <!-- Player 1 -->
+        <div class="audio-player-container" data-audio="assets/audio/song1.mp3">
             <button class="play-btn">▶</button>
-            <audio src="assets/audio/song1.mp3"></audio>
             <div class="player-content">
                 <div class="track-info">
                     <span class="track-title">שיר מקורי - הפקה מלאה</span>
                     <span class="track-artist">אמן: יהודה כהן</span>
                 </div>
-                <div class="progress-container">
-                    <span class="current-time">0:00</span>
-                    <input type="range" class="seek-bar" value="0" max="100">
-                    <span class="duration">0:00</span>
+                <!-- Waveform Element -->
+                <div class="waveform" id="waveform-1"></div>
+                <div class="time-display">
+                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
                 </div>
             </div>
         </div>
 
-        <div class="audio-player-container">
+        <!-- Player 2 -->
+        <div class="audio-player-container" data-audio="assets/audio/song2.mp3">
             <button class="play-btn">▶</button>
-            <audio src="assets/audio/song2.mp3"></audio>
-
             <div class="player-content">
                 <div class="track-info">
                     <span class="track-title">קאבר חתונה - פסנתר ושירה</span>
                     <span class="track-artist">אמן: איתמר לוי</span>
                 </div>
-                <div class="progress-container">
-                    <span class="current-time">0:00</span>
-                    <input type="range" class="seek-bar" value="0" max="100">
-                    <span class="duration">0:00</span>
+                <!-- Waveform Element -->
+                <div class="waveform" id="waveform-2"></div>
+                <div class="time-display">
+                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
                 </div>
             </div>
         </div>
@@ -163,6 +162,7 @@
     <img id="lightbox-img" src="" alt="Full Screen Image">
 </div>
 
+<script src="https://unpkg.com/wavesurfer.js@7"></script>
 <script src="assets/script.js"></script>
 </body>
 </html>

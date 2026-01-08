@@ -265,8 +265,41 @@ class VanillaTilt {
   }
 }
 
-// Initialize Tilt on Cards
+// Initialize Tilt on Cards & Page Transitions
 document.addEventListener("DOMContentLoaded", () => {
   const tiltElements = document.querySelectorAll(".service-card, .gallery-item, .about-card, .testimonial-card, .video-item, .card");
   tiltElements.forEach((el) => new VanillaTilt(el));
+
+  // ===============================
+  // PAGE TRANSITION LOGIC
+  // ===============================
+  // Fade In
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+  }, 100);
+
+  // Fade Out on Link Click
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      const target = link.getAttribute("target");
+
+      // Check if it's an internal link and not just a hash or empty
+      if (
+        href &&
+        !href.startsWith("#") &&
+        !href.startsWith("mailto:") &&
+        !href.startsWith("tel:") &&
+        target !== "_blank"
+      ) {
+        e.preventDefault();
+        document.body.classList.remove("loaded");
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 600); // 600ms to match CSS
+      }
+    });
+  });
 });

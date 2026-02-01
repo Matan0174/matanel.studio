@@ -1,171 +1,238 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matanel Studio | אולפן הקלטות</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
 
     <link rel="stylesheet" href="assets/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
+    <header>
+      <!-- כפתור תפריט -->
+      <button type="button" id="menu-btn">☰</button>
 
-<header>
-
-    <!-- כפתור תפריט -->
-    <button type="button" id="menu-btn">☰</button>
-
-    <!-- תפריט צד -->
-    <nav id="side-menu">
+      <!-- תפריט צד -->
+      <nav id="side-menu">
         <ul>
-            <li><a href="index.html">בית</a></li>
-            <li><a href="ABOUT.html">אודות</a></li>
-            <li><a href="karaoke.html">קריוקי</a></li>
-            <li><a href="contact.html">צור קשר</a></li>
+          <li><a href="index.html">בית</a></li>
+          <li><a href="ABOUT.html">אודות</a></li>
+          <li><a href="karaoke.html">קריוקי</a></li>
+          <li><a href="contact.html">צור קשר</a></li>
         </ul>
-    </nav>
+      </nav>
 
-    <!-- רקע כהה -->
-    <div id="overlay"></div>
+      <!-- רקע כהה -->
+      <div id="overlay"></div>
 
-    <!-- תוכן ראשי של ההדר -->
-    <div class="container">
+      <!-- תוכן ראשי של ההדר -->
+      <div class="container">
         <h1>Matanel Studio</h1>
         <p>הקלטות • מיקס • מאסטרינג • הפקות מוזיקליות</p>
         <a class="btn" href="contact.html">הזמן סשן עכשיו</a>
-    </div>
+      </div>
 
-    <div class="scroll-down">
+      <div class="scroll-down">
         <div class="mouse">
-            <div class="wheel"></div>
+          <div class="wheel"></div>
         </div>
         <span>גלול למטה</span>
-    </div>
-</header>
+      </div>
+    </header>
 
-<!-- שירותים -->
-<section id="services" class="reveal">
-    <div class="container">
+    <!-- שירותים -->
+    <section id="services" class="reveal">
+      <div class="container">
         <h2>השירותים שלנו</h2>
         <div class="services-grid">
-            <div class="service-card"><h3>הקלטות</h3><p>הקלטת שירה וכלים באקוסטיקה מושלמת.</p></div>
-            <div class="service-card"><h3>הפקה מוזיקלית</h3><p>מהסקיצה ועד השיר הסופי.</p></div>
-            <div class="service-card"><h3>יצירת פלייבקים</h3><p>פלייבקים איכותים לכל שיר וזאנר.</p></div>
-            <div class="service-card"><h3>מיקס ומאסטרינג</h3><p>סידור, איזון וליטוש הפרוייקט כדי שישמע הכי טוב שאפשר.</p></div>
+          <div class="service-card">
+            <h3>הקלטות</h3>
+            <p>הקלטת שירה וכלים באקוסטיקה מושלמת.</p>
+          </div>
+          <div class="service-card">
+            <h3>הפקה מוזיקלית</h3>
+            <p>מהסקיצה ועד השיר הסופי.</p>
+          </div>
+          <div class="service-card">
+            <h3>יצירת פלייבקים</h3>
+            <p>פלייבקים איכותים לכל שיר וזאנר.</p>
+          </div>
+          <div class="service-card">
+            <h3>מיקס ומאסטרינג</h3>
+            <p>סידור, איזון וליטוש הפרוייקט כדי שישמע הכי טוב שאפשר.</p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- תיק עבודות (נגן אודיו) -->
-<section id="portfolio" class="reveal">
-    <div class="container">
+    <!-- תיק עבודות (נגן אודיו) -->
+    <section id="portfolio" class="reveal">
+      <div class="container">
         <h2>תיק עבודות</h2>
         <p>האזינו להפקות שנוצרו אצלנו באולפן</p>
-        
+
         <!-- Player 1 -->
         <div class="audio-player-container" data-audio="assets/audio/song1.mp3">
-            <button class="play-btn">▶</button>
-            <div class="player-content">
-                <div class="track-info">
-                    <span class="track-title">שיר מקורי - הפקה מלאה</span>
-                    <span class="track-artist">אמן: יהודה כהן</span>
-                </div>
-                <!-- Waveform Element -->
-                <div class="waveform" id="waveform-1"></div>
-                <div class="time-display">
-                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
-                </div>
+          <button class="play-btn">▶</button>
+          <div class="player-content">
+            <div class="track-info">
+              <span class="track-title">שיר מקורי - הפקה מלאה</span>
+              <span class="track-artist">אמן: יהודה כהן</span>
             </div>
+            <!-- Waveform Element -->
+            <div class="waveform" id="waveform-1"></div>
+            <div class="time-display">
+              <span class="current-time">0:00</span> /
+              <span class="duration">0:00</span>
+            </div>
+          </div>
         </div>
 
         <!-- Player 2 -->
         <div class="audio-player-container" data-audio="assets/audio/song2.mp3">
-            <button class="play-btn">▶</button>
-            <div class="player-content">
-                <div class="track-info">
-                    <span class="track-title">קאבר חתונה - פסנתר ושירה</span>
-                    <span class="track-artist">אמן: איתמר לוי</span>
-                </div>
-                <!-- Waveform Element -->
-                <div class="waveform" id="waveform-2"></div>
-                <div class="time-display">
-                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
-                </div>
+          <button class="play-btn">▶</button>
+          <div class="player-content">
+            <div class="track-info">
+              <span class="track-title">קאבר חתונה - פסנתר ושירה</span>
+              <span class="track-artist">אמן: איתמר לוי</span>
             </div>
+            <!-- Waveform Element -->
+            <div class="waveform" id="waveform-2"></div>
+            <div class="time-display">
+              <span class="current-time">0:00</span> /
+              <span class="duration">0:00</span>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- גלריה -->
-<section id="gallery" class="reveal">
-    <div class="container">
+    <!-- גלריה -->
+    <section id="gallery" class="reveal">
+      <div class="container">
         <h2>האולפן מבפנים</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="assets/photos/studio_console.jpg"></div>
-            <div class="gallery-item"><img src="assets/photos/vocal_booth.jpg"></div>
-            <div class="gallery-item"><img src="assets/photos/instruments.jpg"></div>
-            <div class="gallery-item"><img src="assets/photos/Recording Room.jpg"></div>
-            <div class="gallery-item"><img src="assets/photos/Equipment.jpg"></div>
-            <div class="gallery-item"><img src="assets/photos/piano.jpg"></div>
-            
+          <div class="gallery-item">
+            <img src="assets/photos/studio_console.jpg" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/photos/vocal_booth.jpg" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/photos/instruments.jpg" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/photos/Recording Room.jpg" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/photos/Equipment.jpg" />
+          </div>
+          <div class="gallery-item"><img src="assets/photos/piano.jpg" /></div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- המלצות -->
-<section id="testimonials" class="reveal">
-    <div class="container">
+    <!-- המלצות -->
+    <section id="testimonials" class="reveal">
+      <div class="container">
         <h2>מה אומרים עלינו</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p>"חוויה מדהימה! הסאונד יצא בדיוק כמו שדמיינו. אתה מקצוען אמיתי שיודע להוציא את המיטב מכל אמן."</p>
-                <div class="client-name">- יוסי א.</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"האווירה באולפן כל כך נעימה וביתית, זה עזר לנו להשתחרר ולתת ביצועים מעולים. ממליצה בחום!"</p>
-                <div class="client-name">- נועה ש.</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"ציוד ברמה הכי גבוהה שיש, והתוצאה מדברת בעד עצמה. המיקס והמאסטרינג פשוט מושלמים."</p>
-                <div class="client-name">- דוד ט.</div>
-            </div>
+          <div class="testimonial-card">
+            <p>
+              "חוויה מדהימה! הסאונד יצא בדיוק כמו שדמיינו. אתה מקצוען אמיתי
+              שיודע להוציא את המיטב מכל אמן."
+            </p>
+            <div class="client-name">- יוסי א.</div>
+          </div>
+          <div class="testimonial-card">
+            <p>
+              "האווירה באולפן כל כך נעימה וביתית, זה עזר לנו להשתחרר ולתת
+              ביצועים מעולים. ממליצה בחום!"
+            </p>
+            <div class="client-name">- נועה ש.</div>
+          </div>
+          <div class="testimonial-card">
+            <p>
+              "ציוד ברמה הכי גבוהה שיש, והתוצאה מדברת בעד עצמה. המיקס והמאסטרינג
+              פשוט מושלמים."
+            </p>
+            <div class="client-name">- דוד ט.</div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="container">
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
         <div class="footer-content">
-            <h3>Matanel Studio</h3>
-            <div class="social-links">
-                <a href="https://www.instagram.com/matanel.maman?igsh=MW1ub2hlZWhvbXZnaA==" target="_blank" aria-label="Instagram">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.9 0-184.9zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                    Instagram
-                </a>
-                <a href="https://wa.me/972539655012?text=שלום%20ראיתי%20את%20האתר%20שלך" target="_blank" aria-label="WhatsApp">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                    WhatsApp
-                </a>
-                <a href="https://www.tiktok.com/@matanel.maman?_r=1&_t=ZS-91wMNsVMVkd" target="_blank" aria-label="TikTok">
-                    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
-                    TikTok
-                </a>
-            </div>
+          <h3>Matanel Studio</h3>
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/matanel.maman?igsh=MW1ub2hlZWhvbXZnaA=="
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <svg
+                class="social-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.9 0-184.9zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+              Instagram
+            </a>
+            <a
+              href="https://wa.me/972539655012?text=שלום%20ראיתי%20את%20האתר%20שלך"
+              target="_blank"
+              aria-label="WhatsApp"
+            >
+              <svg
+                class="social-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"
+                />
+              </svg>
+              WhatsApp
+            </a>
+            <a
+              href="https://www.tiktok.com/@matanel.maman?_r=1&_t=ZS-91wMNsVMVkd"
+              target="_blank"
+              aria-label="TikTok"
+            >
+              <svg
+                class="social-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
+                />
+              </svg>
+              TikTok
+            </a>
+          </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 Matanel Studio. כל הזכויות שמורות.
+          &copy; 2025 Matanel Studio. כל הזכויות שמורות.
         </div>
+      </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+      <span id="lightbox-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Full Screen Image" />
     </div>
-</footer>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="Full Screen Image">
-</div>
-
-<script src="https://unpkg.com/wavesurfer.js@7"></script>
-<script src="assets/script.js"></script>
-</body>
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+    <script src="assets/script.js"></script>
+  </body>
 </html>

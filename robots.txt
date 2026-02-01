@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://matanel.studio/sitemap.xml
+Sitemap: https://matanel.online/sitemap.xml

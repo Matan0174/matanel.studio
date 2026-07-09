@@ -7,9 +7,28 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
 
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(to left, var(--primary-blue), var(--secondary-purple));
+        width: 0%;
+        z-index: 9999;
+        transition: width 0.1s ease;
+      }
+      .service-card i {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        display: block;
+      }
+    </style>
   </head>
 
-  <body>
+  <body><div id="progress-bar"></div>
     <header>
       <!-- כפתור תפריט -->
       <button type="button" id="menu-btn">☰</button>
@@ -47,19 +66,23 @@
       <div class="container">
         <h2>השירותים שלנו</h2>
         <div class="services-grid">
-          <div class="service-card">
+<div class="service-card">
+            <i class="fas fa-microphone-alt"></i>
             <h3>הקלטות</h3>
             <p>הקלטת שירה וכלים באקוסטיקה מושלמת.</p>
           </div>
-          <div class="service-card">
+<div class="service-card">
+            <i class="fas fa-compact-disc"></i>
             <h3>הפקה מוזיקלית</h3>
             <p>מהסקיצה ועד השיר הסופי.</p>
           </div>
-          <div class="service-card">
+<div class="service-card">
+            <i class="fas fa-music"></i>
             <h3>יצירת פלייבקים</h3>
             <p>פלייבקים איכותים לכל שיר וזאנר.</p>
           </div>
-          <div class="service-card">
+<div class="service-card">
+            <i class="fas fa-sliders-h"></i>
             <h3>מיקס ומאסטרינג</h3>
             <p>סידור, איזון וליטוש הפרוייקט כדי שישמע הכי טוב שאפשר.</p>
           </div>

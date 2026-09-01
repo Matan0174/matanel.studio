@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>צור קשר | Matanel Studio</title>
+    <meta name="description" content="צרו קשר עם Matanel Studio — מלאו פרטים ונחזור אליכם בהקדם לתיאום סשן הקלטה." />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
      <!-- ☰ MENU BUTTON -->
-    <button id="menu-btn">☰</button>
+    <button id="menu-btn" aria-label="פתח תפריט ניווט">☰</button>
 
     <!-- SIDE MENU -->
     <nav id="side-menu">
@@ -34,18 +35,18 @@
 
                 <form id="contactForm">
                     <div>
-                        <label>שם מלא</label>
-                        <input type="text" name="name" required placeholder="השם שלך...">
+                        <label for="contact-name">שם מלא</label>
+                        <input type="text" id="contact-name" name="name" required placeholder="השם שלך...">
                     </div>
 
                     <div>
-                        <label>טלפון</label>
-                        <input type="tel" name="phone" required placeholder="050-0000000">
+                        <label for="contact-phone">טלפון</label>
+                        <input type="tel" id="contact-phone" name="phone" required placeholder="050-0000000">
                     </div>
 
                     <div>
-                        <label>הודעה / פרטים על הפרויקט</label>
-                        <textarea name="message" required placeholder="ספר לנו על הפרויקט שלך..."></textarea>
+                        <label for="contact-message">הודעה / פרטים על הפרויקט</label>
+                        <textarea id="contact-message" name="message" required placeholder="ספר לנו על הפרויקט שלך..."></textarea>
                     </div>
 
                     <button type="submit" class="btn" style="width: 100%; text-align: center;">שלח הודעה</button>

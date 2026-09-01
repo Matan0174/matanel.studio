@@ -15,6 +15,11 @@ document
   ?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "שולח...";
+    submitBtn.disabled = true;
+
     const formData = new FormData(this);
 
     try {
@@ -25,17 +30,69 @@ document
 
       if (!response.ok) {
         const text = await response.text();
-        alert("שגיאה מהשרת:\n" + text);
+        showToast("שגיאה מהשרת: " + text, "error");
         return;
       }
 
       const data = await response.json();
-      alert(data.message || "ההודעה נשלחה בהצלחה!");
-      this.reset(); // ניקוי הטופס
+      showToast(data.message || "ההודעה נשלחה בהצלחה! נחזור אליך בהקדם.", "success");
+      this.reset();
     } catch (err) {
-      alert("שגיאת רשת: " + err.message);
+      showToast("שגיאת רשת: " + err.message, "error");
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
   });
+
+// Toast notification helper
+function showToast(message, type = "success") {
+  // Remove existing toast if any
+  const existing = document.querySelector(".toast-notification");
+  if (existing) existing.remove();
+
+  const toast = document.createElement("div");
+  toast.className = `toast-notification toast-${type}`;
+  toast.textContent = message;
+
+  // Styles
+  Object.assign(toast.style, {
+    position: "fixed",
+    bottom: "30px",
+    left: "50%",
+    transform: "translateX(-50%) translateY(20px)",
+    padding: "16px 28px",
+    borderRadius: "12px",
+    color: "#fff",
+    fontSize: "1rem",
+    fontWeight: "500",
+    zIndex: "9999",
+    opacity: "0",
+    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    maxWidth: "90vw",
+    textAlign: "center",
+    backdropFilter: "blur(10px)",
+    boxShadow: "0 10px 40px rgba(0,0,0,0.3)",
+    background: type === "success"
+      ? "linear-gradient(135deg, #10b981, #059669)"
+      : "linear-gradient(135deg, #ef4444, #dc2626)",
+  });
+
+  document.body.appendChild(toast);
+
+  // Animate in
+  requestAnimationFrame(() => {
+    toast.style.opacity = "1";
+    toast.style.transform = "translateX(-50%) translateY(0)";
+  });
+
+  // Auto remove
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateX(-50%) translateY(20px)";
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
+}
 
 // ===============================
 // MENU & NAVIGATION
@@ -267,8 +324,12 @@ class VanillaTilt {
 
 // Initialize Tilt on Cards & Page Transitions
 document.addEventListener("DOMContentLoaded", () => {
-  const tiltElements = document.querySelectorAll(".service-card, .gallery-item, .about-card, .testimonial-card, .video-item, .card");
-  tiltElements.forEach((el) => new VanillaTilt(el));
+  // Only enable tilt on non-touch devices (desktop)
+  const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  if (!isTouchDevice) {
+    const tiltElements = document.querySelectorAll(".service-card, .gallery-item, .about-card, .testimonial-card, .video-item, .card");
+    tiltElements.forEach((el) => new VanillaTilt(el));
+  }
 
   // ===============================
   // PAGE TRANSITION LOGIC
@@ -301,5 +362,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600); // 600ms to match CSS
       }
     });
+  });
+  // ===============================
+  // DYNAMIC COPYRIGHT YEAR
+  // ===============================
+  document.querySelectorAll(".footer-bottom").forEach((el) => {
+    const year = new Date().getFullYear();
+    el.innerHTML = `&copy; ${year} Matanel Studio. כל הזכויות שמורות.`;
   });
 });

@@ -553,15 +553,267 @@ nav#side-menu a:hover {
 }
 
 /* ----------- RESPONSIVE ----------- */
+
+/* iOS/Safari: background-attachment: fixed doesn't work on mobile */
+@supports (-webkit-touch-callout: none) {
+  header {
+    background-attachment: scroll;
+  }
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .container {
     padding: 0 15px;
+  }
+
+  /* Header */
+  header {
+    background-attachment: scroll; /* Fallback for all mobile */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile address bars */
+  }
+
+  header p {
+    font-size: 1.2rem;
+    padding: 0 15px;
+    margin-bottom: 2rem;
+  }
+
+  /* CTA Button — full width on mobile */
+  header .btn {
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  /* Scroll indicator — smaller on mobile */
+  .scroll-down {
+    bottom: 15px;
+  }
+
+  .scroll-down span {
+    font-size: 0.7rem;
+  }
+
+  .mouse {
+    width: 22px;
+    height: 36px;
+  }
+
+  /* Sections — less padding */
+  section {
+    padding: 50px 0;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 30px 20px;
+  }
+
+  /* Audio Player — stack vertically */
+  .audio-player-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .play-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    align-self: center;
+  }
+
+  .player-content {
+    width: 100%;
+  }
+
+  .waveform {
+    height: 50px;
+  }
+
+  .track-title {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .track-artist {
+    font-size: 0.85rem;
+    text-align: center;
+    display: block;
+  }
+
+  .time-display {
+    text-align: center;
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .gallery-item {
+    height: 200px;
+  }
+
+  /* Video Grid (Karaoke) */
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Testimonials Grid */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    padding: 25px 20px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 0 20px;
+    margin-top: 40px;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .social-links a {
+    font-size: 1rem;
+  }
+
+  /* Lightbox — mobile friendly close button */
+  #lightbox-close {
+    top: 15px;
+    right: 15px;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+
+  #lightbox img {
+    max-width: 95%;
+    max-height: 80%;
+  }
+
+  /* Menu Button — larger touch target */
+  #menu-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
+
+  /* Side menu */
+  nav#side-menu {
+    width: 260px;
+    right: -260px;
+  }
+
+  nav#side-menu a {
+    font-size: 1.3rem;
+  }
+
+  /* Contact card */
+  .card {
+    padding: 25px 20px;
+    margin: 0 10px;
+  }
+
+  /* Karaoke title override */
+  .video-info {
+    padding: 15px;
+  }
+
+  .video-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* Extra small devices (iPhone SE, Galaxy S etc.) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  header .btn {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 12px 15px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    height: 180px;
+  }
+
+  .service-card {
+    padding: 25px 15px;
+  }
+
+  .testimonial-card {
+    padding: 20px 15px;
+  }
+
+  .audio-player-container {
+    padding: 15px;
+  }
+
+  .about-card {
+    padding: 20px 15px;
+  }
+
+  .about-card p {
+    font-size: 1rem;
+  }
+
+  .about-list li {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 20px 15px;
+  }
+
+  footer .social-links {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 

@@ -23,17 +23,15 @@
   <body>
     <!-- ══ TOP BAR ══ -->
     <header class="topbar" id="topbar">
-      <button
-        class="menu-btn"
-        id="menu-btn"
-        aria-label="פתיחת תפריט"
-        aria-expanded="false"
-        aria-controls="side-menu"
-      >
-        <span></span>
-        <span></span>
-      </button>
       <a class="wordmark" href="index.html">Matanel<span>.</span>Studio</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="index.html">בית</a></li>
+          <li><a href="ABOUT.html" aria-current="page">אודות</a></li>
+          <li><a href="karaoke.html">קריוקי</a></li>
+          <li><a href="contact.html">צור קשר</a></li>
+        </ul>
+      </nav>
       <a
         class="topbar__wa"
         href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
@@ -44,20 +42,6 @@
         וואטסאפ
       </a>
     </header>
-
-    <!-- ══ DRAWER ══ -->
-    <nav id="side-menu" aria-label="ניווט ראשי">
-      <ul>
-        <li><a href="index.html" data-index="01">בית</a></li>
-        <li><a href="ABOUT.html" data-index="02" aria-current="page">אודות</a></li>
-        <li><a href="karaoke.html" data-index="03">קריוקי</a></li>
-        <li><a href="contact.html" data-index="04">צור קשר</a></li>
-      </ul>
-      <p class="drawer-foot">
-        <a href="https://wa.me/972539655012" dir="ltr">053&#8209;965&#8209;5012</a>
-      </p>
-    </nav>
-    <div id="overlay"></div>
 
     <!-- ══ PAGE HEAD ══ -->
     <section class="page-head">

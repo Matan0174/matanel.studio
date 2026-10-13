@@ -7,7 +7,7 @@ const API_URL =
     ? "http://127.0.0.1:8000"
     : "https://matanel-studio-backend-79613215467.us-central1.run.app";
 
-const ACCENT = "#e8503c";
+const ACCENT = "#19c3bb";
 
 // ===============================
 // TOAST
@@ -65,17 +65,11 @@ document.getElementById("contactForm")?.addEventListener("submit", async functio
 });
 
 // ===============================
-// TOP BAR + DRAWER
+// TOP BAR
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  const topbar = document.getElementById("topbar");
-  const menuBtn = document.getElementById("menu-btn");
-  const drawer = document.getElementById("side-menu");
-  const overlay = document.getElementById("overlay");
-
-  if (topbar) {
+  if (document.getElementById("topbar")) {
     const onScroll = () => {
-      topbar.classList.toggle("is-stuck", window.scrollY > 24);
       document.body.classList.toggle(
         "show-wa",
         window.scrollY > window.innerHeight * 0.6
@@ -83,28 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-  }
-
-  function setMenu(open) {
-    drawer.classList.toggle("active", open);
-    overlay.classList.toggle("active", open);
-    menuBtn.classList.toggle("is-open", open);
-    menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.setAttribute("aria-label", open ? "סגירת תפריט" : "פתיחת תפריט");
-    document.body.style.overflow = open ? "hidden" : "";
-    if (open) drawer.querySelector("a")?.focus({ preventScroll: true });
-  }
-
-  if (menuBtn && drawer && overlay) {
-    menuBtn.addEventListener("click", () =>
-      setMenu(!drawer.classList.contains("active"))
-    );
-    overlay.addEventListener("click", () => setMenu(false));
-    document.addEventListener("keydown", (e) => {
-      if (e.key !== "Escape" || !drawer.classList.contains("active")) return;
-      setMenu(false);
-      menuBtn.focus();
-    });
   }
 
   document.querySelectorAll("[data-year]").forEach((el) => {

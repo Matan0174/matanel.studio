@@ -6,16 +6,16 @@
     <title>Matanel Studio | אולפן הקלטות</title>
     <meta
       name="description"
-      content="שיר לחתונה, לבר מצווה או במתנה. מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו — מהשיחה הראשונה ועד הקובץ שמתנגן באירוע."
+      content="אולפן הקלטות מקצועי. הקלטה, מיקס ומאסטרינג — מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו, מהשיחה הראשונה ועד הקובץ הסופי."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="he_IL" />
     <meta property="og:site_name" content="Matanel Studio" />
     <meta property="og:url" content="https://matanel.online/" />
-    <meta property="og:title" content="Matanel Studio | שיר לחתונה, לבר מצווה או במתנה" />
+    <meta property="og:title" content="Matanel Studio | אולפן הקלטות מקצועי" />
     <meta
       property="og:description"
-      content="מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו — מהשיחה הראשונה ועד הקובץ שמתנגן באירוע."
+      content="מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו — מהשיחה הראשונה ועד הקובץ הסופי."
     />
     <meta property="og:image" content="https://matanel.online/assets/photos/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -37,17 +37,15 @@
   <body>
     <!-- ══ TOP BAR ══ -->
     <header class="topbar" id="topbar">
-      <button
-        class="menu-btn"
-        id="menu-btn"
-        aria-label="פתיחת תפריט"
-        aria-expanded="false"
-        aria-controls="side-menu"
-      >
-        <span></span>
-        <span></span>
-      </button>
       <a class="wordmark" href="index.html">Matanel<span>.</span>Studio</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="index.html" aria-current="page">בית</a></li>
+          <li><a href="ABOUT.html">אודות</a></li>
+          <li><a href="karaoke.html">קריוקי</a></li>
+          <li><a href="contact.html">צור קשר</a></li>
+        </ul>
+      </nav>
       <a
         class="topbar__wa"
         href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
@@ -58,20 +56,6 @@
         וואטסאפ
       </a>
     </header>
-
-    <!-- ══ DRAWER ══ -->
-    <nav id="side-menu" aria-label="ניווט ראשי">
-      <ul>
-        <li><a href="index.html" data-index="01" aria-current="page">בית</a></li>
-        <li><a href="ABOUT.html" data-index="02">אודות</a></li>
-        <li><a href="karaoke.html" data-index="03">קריוקי</a></li>
-        <li><a href="contact.html" data-index="04">צור קשר</a></li>
-      </ul>
-      <p class="drawer-foot">
-        <a href="https://wa.me/972539655012" dir="ltr">053&#8209;965&#8209;5012</a>
-      </p>
-    </nav>
-    <div id="overlay"></div>
 
     <!-- ══ HERO ══ -->
     <section class="hero">
@@ -97,12 +81,12 @@
       </picture>
 
       <div class="container">
-        <h1 class="hero__title">שיר לחתונה.<br />לבר מצווה.<br /><em>במתנה.</em></h1>
+        <h1 class="hero__title">אולפן הקלטות מקצועי.<br /><em>הקלטה. מיקס. מאסטרינג.</em></h1>
 
         <div class="hero__meta">
           <p>
             אני מתנאל, ואני מקליט, מפיק ומלטש את השיר שלכם בעצמי — מהשיחה
-            הראשונה ועד הקובץ שמתנגן באירוע. גם אם מעולם לא עמדתם מול מיקרופון.
+            הראשונה ועד הקובץ הסופי. גם אם מעולם לא עמדתם מול מיקרופון.
           </p>
           <div class="hero__actions">
             <a
@@ -137,7 +121,7 @@
             <button
               class="play-btn"
               type="button"
-              aria-label="נגן: קאבר חתונה — פסנתר ושירה"
+              aria-label="נגן: קאבר — פסנתר ושירה"
               aria-pressed="false"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -147,7 +131,7 @@
             </button>
             <div class="track__body">
               <div class="track__head">
-                <h3 class="track__title">קאבר חתונה — פסנתר ושירה</h3>
+                <h3 class="track__title">קאבר — פסנתר ושירה</h3>
                 <span class="track__artist">איתמר לוי</span>
               </div>
               <div class="waveform"></div>
@@ -215,7 +199,7 @@
             <span class="step__num" aria-hidden="true">1</span>
             <h3 class="step__title">מדברים</h3>
             <p class="step__desc">
-              שולחים הודעה ומספרים על האירוע ועל השיר. אחזור אליכם עם זמינות
+              שולחים הודעה ומספרים על השיר שאתם רוצים ליצור. אחזור אליכם עם זמינות
               והצעת מחיר, בדרך כלל תוך 24 שעות.
             </p>
           </li>
@@ -241,40 +225,87 @@
     <section id="services" class="reveal">
       <div class="container">
         <div class="section-head">
-          <h2>מה אפשר<br />להקליט כאן</h2>
+          <h2>מה אני<br />עושה</h2>
           <p>
             כל שלב בתהליך נעשה אצלי, מה שאומר שהסאונד נשאר עקבי מההקלטה הראשונה
             ועד הקובץ הסופי.
           </p>
         </div>
 
-        <ul class="service-list">
-          <li class="service-row">
-            <h3 class="service-row__title">הקלטה</h3>
-            <p class="service-row__desc">
-              שירה וכלים בחדר מטופל אקוסטית. אני מכוון אתכם תוך כדי, טייק אחרי
-              טייק.
-            </p>
-          </li>
-          <li class="service-row">
-            <h3 class="service-row__title">הפקה מוזיקלית</h3>
-            <p class="service-row__desc">
-              מסקיצה בטלפון לשיר גמור. עיבוד, כלים ונגנים, ואיך השיר צריך
+        <ul class="service-grid">
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-production" /></svg>
+            </span>
+            <h3 class="service__title">הפקות</h3>
+            <p class="service__desc">
+              מסקיצה בטלפון לשיר גמור: כלים, נגנים, ואיך השיר צריך
               להרגיש.
             </p>
           </li>
-          <li class="service-row">
-            <h3 class="service-row__title">פלייבקים וקריוקי</h3>
-            <p class="service-row__desc">
-              פלייבק מדויק לשירה באירוע או בהופעה, בכל סולם שנוח לכם, וגם
-              <a class="link" href="karaoke.html">הפקות קריוקי</a>.
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-record" /></svg>
+            </span>
+            <h3 class="service__title">הקלטות</h3>
+            <p class="service__desc">
+              שירה וכלים בחדר מטופל אקוסטית. אני מכוון אתכם תוך כדי, טייק
+              אחרי טייק.
             </p>
           </li>
-          <li class="service-row">
-            <h3 class="service-row__title">מיקס ומאסטרינג</h3>
-            <p class="service-row__desc">
-              הליטוש הסופי, כדי שהשיר יישמע חזק ונקי ברמקולים של האולם,
-              באוזניות וברכב.
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-arrange" /></svg>
+            </span>
+            <h3 class="service__title">עיבודים מוזיקליים</h3>
+            <p class="service__desc">
+              עיבוד מלא לשיר שלכם, מהרגע הראשון ועד שהוא נשמע בדיוק כמו שדמיינתם.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-mix" /></svg>
+            </span>
+            <h3 class="service__title">מיקס</h3>
+            <p class="service__desc">
+              איזון הערוצים בין הקול, הכלים והמרחב, כך שכל שכבה תישמע בבירור.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-master" /></svg>
+            </span>
+            <h3 class="service__title">מאסטרינג</h3>
+            <p class="service__desc">
+              הליטוש הסופי, כדי שהשיר יישמע חזק ונקי ברמקולים, באוזניות וברכב.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-lessons" /></svg>
+            </span>
+            <h3 class="service__title">שיעורי נגינה לילדים</h3>
+            <p class="service__desc">
+              שיעורי קלידים ופסנתר לילדים, בקצב ובסגנון שמתאימים לכל ילד.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-events" /></svg>
+            </span>
+            <h3 class="service__title">נגינה באירועים</h3>
+            <p class="service__desc">
+              קלידן חי לאירועים, טברנות וחפלות, עם אווירה וליווי שמרימים את המקום.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__badge">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#svc-karaoke" /></svg>
+            </span>
+            <h3 class="service__title">קריוקי ופלייבקים</h3>
+            <p class="service__desc">
+              פלייבק מדויק בכל סולם שנוח לכם, וגם
+              <a class="link" href="karaoke.html">הפקות קריוקי</a>.
             </p>
           </li>
         </ul>

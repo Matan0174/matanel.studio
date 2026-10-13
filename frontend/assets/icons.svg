@@ -5,4 +5,59 @@
   <symbol id="close" viewBox="0 0 24 24">
     <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
   </symbol>
+  <symbol id="svc-production" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="M12 3a9 9 0 0 1 9 9" />
+    </g>
+  </symbol>
+  <symbol id="svc-record" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" />
+    </g>
+  </symbol>
+  <symbol id="svc-arrange" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V6l10-2v12" />
+      <circle cx="6.5" cy="18" r="2.5" />
+      <circle cx="16.5" cy="16" r="2.5" />
+    </g>
+  </symbol>
+  <symbol id="svc-mix" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 4v8M6 16v4M12 4v2M12 10v10M18 4v9M18 17v3" />
+      <circle cx="6" cy="14" r="2" />
+      <circle cx="12" cy="8" r="2" />
+      <circle cx="18" cy="15" r="2" />
+    </g>
+  </symbol>
+  <symbol id="svc-master" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4" />
+    </g>
+  </symbol>
+  <symbol id="svc-keys" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <path d="M8 5v8M16 5v8M12 13v6" />
+    </g>
+  </symbol>
+  <symbol id="svc-lessons" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2zM12 6v14" />
+    </g>
+  </symbol>
+  <symbol id="svc-events" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z" />
+    </g>
+  </symbol>
+  <symbol id="svc-karaoke" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M10 9l5 3-5 3z" />
+    </g>
+  </symbol>
 </svg>

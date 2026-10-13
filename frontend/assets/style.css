@@ -18,9 +18,13 @@
   --text-faint: #94908a;
 
   /* Single accent — fills carry ink text, never white (white fails AA) */
-  --accent: #e8503c;
-  --accent-dim: #a8382a;
-  --on-accent: #17171a;
+  --accent: #19c3bb;
+  --accent-dim: #108a84;
+  --on-accent: #101013;
+
+  /* WhatsApp brand green — dark text, white fails AA on it */
+  --whatsapp: #25d366;
+  --whatsapp-hover: #1ebe5a;
 
   /* Hairlines */
   --rule: rgba(236, 235, 232, 0.16);
@@ -232,28 +236,71 @@ section {
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 100;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem var(--gutter);
-  transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
-  border-bottom: 1px solid transparent;
+  gap: 0 1.5rem;
+  padding: 0.5rem var(--gutter);
+  background: #000;
+  border-bottom: 1px solid var(--rule);
 }
 
-.topbar.is-stuck {
-  background: rgba(23, 23, 26, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom-color: var(--rule);
+.topnav {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.topnav ul {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.25rem);
+}
+
+.topnav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.3s var(--ease);
+}
+
+.topnav a:hover,
+.topnav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+@media (max-width: 599px) {
+  .topbar {
+    grid-template-columns: 1fr;
+    padding-block: 0.65rem 0;
+  }
+
+  .wordmark {
+    grid-column: 1;
+    justify-self: center;
+  }
+
+  .topnav {
+    grid-row: 2;
+  }
 }
 
 .wordmark {
+  grid-column: 2;
+  grid-row: 1;
   font-family: var(--font-mono);
-  font-size: var(--step--1);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+@media (max-width: 599px) {
+  .wordmark {
+    grid-column: 1;
+  }
 }
 
 .wordmark span {
@@ -262,6 +309,9 @@ section {
 
 /* Persistent WhatsApp action. On phones it moves to .wa-float (thumb zone). */
 .topbar__wa {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -284,6 +334,32 @@ section {
   }
 }
 
+.topbar__wa,
+.wa-float,
+.btn--solid[href*="wa.me"] {
+  background: var(--whatsapp);
+  border-color: var(--whatsapp);
+  color: var(--on-accent);
+}
+
+.topbar__wa:hover,
+.wa-float:hover {
+  background: var(--whatsapp-hover);
+}
+
+.btn--solid[href*="wa.me"]::after {
+  background: var(--whatsapp-hover);
+}
+
+.btn--solid[href*="wa.me"]:hover {
+  border-color: var(--whatsapp-hover);
+}
+
+/* Plain text links and footer icon */
+a[href*="wa.me"]:not(.btn):not(.topbar__wa):not(.wa-float) {
+  color: var(--whatsapp);
+}
+
 .wa-float {
   display: none;
 }
@@ -301,7 +377,7 @@ section {
     min-height: 52px;
     font-weight: 700;
     color: var(--on-accent);
-    background: var(--accent);
+    background: var(--whatsapp);
     box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.6);
     opacity: 0;
     visibility: hidden;
@@ -320,139 +396,6 @@ section {
     visibility: visible;
     transform: none;
   }
-}
-
-/* Hamburger — two rules that cross into an X */
-.menu-btn {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-content: center;
-  gap: 7px;
-}
-
-.menu-btn span {
-  display: block;
-  width: 26px;
-  height: 1.5px;
-  background: var(--text);
-  transition: transform 0.4s var(--ease), opacity 0.2s linear;
-}
-
-.menu-btn.is-open span:first-child {
-  transform: translateY(4.25px) rotate(45deg);
-}
-
-.menu-btn.is-open span:last-child {
-  transform: translateY(-4.25px) rotate(-45deg);
-}
-
-/* --------------------------------------------------------------------------
-   6. DRAWER NAVIGATION
-   -------------------------------------------------------------------------- */
-#side-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 95;
-  width: min(420px, 85vw);
-  height: 100vh;
-  height: 100dvh;
-  padding: 7rem var(--gutter) 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background: var(--ink-deep);
-  border-inline-start: 1px solid var(--rule);
-  transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.6s var(--ease), visibility 0.6s;
-}
-
-#side-menu.active {
-  transform: translateX(0);
-  visibility: visible;
-  /* Visible at once on open so focus can move in; delayed only on close */
-  transition: transform 0.6s var(--ease), visibility 0s;
-}
-
-#side-menu ul {
-  display: grid;
-}
-
-#side-menu li {
-  border-top: 1px solid var(--rule);
-  opacity: 0;
-  transform: translateX(1.5rem);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-}
-
-#side-menu li:last-child {
-  border-bottom: 1px solid var(--rule);
-}
-
-#side-menu.active li {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-#side-menu.active li:nth-child(1) {
-  transition-delay: 0.15s;
-}
-#side-menu.active li:nth-child(2) {
-  transition-delay: 0.22s;
-}
-#side-menu.active li:nth-child(3) {
-  transition-delay: 0.29s;
-}
-#side-menu.active li:nth-child(4) {
-  transition-delay: 0.36s;
-}
-
-#side-menu ul a {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-block: 1.1rem;
-  font-size: var(--step-2);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-dim);
-  transition: color 0.3s var(--ease), padding 0.3s var(--ease);
-}
-
-#side-menu ul a:hover,
-#side-menu ul a[aria-current="page"] {
-  color: var(--text);
-  padding-inline-start: 0.75rem;
-}
-
-.drawer-foot {
-  font-size: var(--step-0);
-  color: var(--text-dim);
-}
-
-.drawer-foot a:hover {
-  color: var(--accent);
-}
-
-#overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  background: rgba(10, 10, 12, 0.66);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s var(--ease), visibility 0.5s;
-}
-
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
 }
 
 /* --------------------------------------------------------------------------
@@ -643,7 +586,7 @@ section {
 /* Tighten the hero so the CTA still lands above the fold on phones */
 @media (max-width: 599px) {
   .hero {
-    padding-block: 5.5rem 2rem;
+    padding-block: 7.5rem 2rem;
   }
 
   .hero__title {
@@ -661,33 +604,89 @@ section {
 }
 
 /* --------------------------------------------------------------------------
-   9. SERVICES — editorial rows, not cards
+   9. SERVICES — full-bleed accent band, round icon badges
    -------------------------------------------------------------------------- */
-.service-row {
+#services {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+#services h2,
+#services h3 {
+  color: var(--on-accent);
+}
+
+#services .section-head {
+  border-bottom-color: rgba(16, 16, 19, 0.3);
+}
+
+#services .section-head p,
+.service__desc {
+  color: var(--on-accent);
+  font-weight: 400;
+}
+
+#services .link {
+  color: var(--on-accent);
+  text-decoration-color: currentColor;
+}
+
+#services .link:hover {
+  color: var(--on-accent);
+  text-decoration-thickness: 2px;
+}
+
+#services :focus-visible {
+  outline-color: var(--on-accent);
+}
+
+.service-grid {
   display: grid;
-  gap: 0.5rem;
-  padding-block: clamp(1.5rem, 3vw, 2.5rem);
-  border-bottom: 1px solid var(--rule);
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 3rem);
 }
 
-.service-row__title {
-  font-size: var(--step-2);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-.service-row__desc {
-  color: var(--text-dim);
-  font-weight: 300;
-  max-width: var(--measure);
+@media (min-width: 600px) {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 900px) {
-  .service-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 42ch);
-    align-items: baseline;
-    gap: 2rem;
+  .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+.service {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.service__badge {
+  display: grid;
+  place-content: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--on-accent);
+  color: var(--accent);
+}
+
+.service__badge .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.service__title {
+  font-size: var(--step-1);
+}
+
+.service__desc {
+  max-width: 32ch;
 }
 
 /* --------------------------------------------------------------------------
@@ -833,7 +832,7 @@ section {
 @keyframes buffering {
   50% {
     border-color: var(--accent);
-    box-shadow: 0 0 0 6px rgba(232, 80, 60, 0.18);
+    box-shadow: 0 0 0 6px rgba(25, 195, 187, 0.18);
   }
 }
 
@@ -1297,6 +1296,25 @@ footer {
 
 .social-links a:hover {
   color: var(--accent);
+}
+
+.social-links a[href*="instagram.com"] {
+  color: #e1306c;
+}
+
+.social-links a[href*="tiktok.com"] {
+  color: #fff;
+}
+
+/* TikTok's cyan/red offset glyph */
+.social-links a[href*="tiktok.com"] .social-icon {
+  filter: drop-shadow(-1.5px -1px 0 #25f4ee) drop-shadow(1.5px 1px 0 #fe2c55);
+}
+
+.social-links a[href*="instagram.com"]:hover,
+.social-links a[href*="tiktok.com"]:hover,
+.social-links a[href*="wa.me"]:hover {
+  opacity: 0.8;
 }
 
 .footer-bottom {

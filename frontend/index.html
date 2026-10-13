@@ -6,8 +6,22 @@
     <title>Matanel Studio | אולפן הקלטות</title>
     <meta
       name="description"
-      content="Matanel Studio — אולפן הקלטות מקצועי. הקלטות, מיקס, מאסטרינג והפקות מוזיקליות באיכות הגבוהה ביותר."
+      content="שיר לחתונה, לבר מצווה או במתנה. מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו — מהשיחה הראשונה ועד הקובץ שמתנגן באירוע."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:site_name" content="Matanel Studio" />
+    <meta property="og:url" content="https://matanel.online/" />
+    <meta property="og:title" content="Matanel Studio | שיר לחתונה, לבר מצווה או במתנה" />
+    <meta
+      property="og:description"
+      content="מתנאל ממן מקליט, מפיק ומלטש את השיר שלכם בעצמו — מהשיחה הראשונה ועד הקובץ שמתנגן באירוע."
+    />
+    <meta property="og:image" content="https://matanel.online/assets/photos/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="מתנאל ממן שר באולפן" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,6 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Rubik:wght@700;900&display=swap"
     />
     <link rel="stylesheet" href="assets/style.css" />
+    <script>document.documentElement.classList.add("js")</script>
   </head>
 
   <body>
@@ -33,6 +48,15 @@
         <span></span>
       </button>
       <a class="wordmark" href="index.html">Matanel<span>.</span>Studio</a>
+      <a
+        class="topbar__wa"
+        href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#whatsapp" /></svg>
+        וואטסאפ
+      </a>
     </header>
 
     <!-- ══ DRAWER ══ -->
@@ -51,109 +75,71 @@
 
     <!-- ══ HERO ══ -->
     <section class="hero">
-      <div class="hero__media">
-        <img src="assets/photos/studio_bg.jpg" alt="" aria-hidden="true" />
-      </div>
+      <picture class="hero__media">
+        <source
+          media="(max-width: 599px)"
+          srcset="assets/photos/hero-mobile.webp"
+          type="image/webp"
+        />
+        <source media="(max-width: 599px)" srcset="assets/photos/hero-mobile.jpg" />
+        <source
+          srcset="assets/photos/hero-1280.webp 1280w, assets/photos/hero-1920.webp 1920w"
+          sizes="100vw"
+          type="image/webp"
+        />
+        <img
+          src="assets/photos/hero-1920.jpg"
+          alt="מתנאל ממן שר באולפן"
+          width="1920"
+          height="890"
+          fetchpriority="high"
+        />
+      </picture>
 
       <div class="container">
-        <p class="eyebrow">אולפן הקלטות והפקה</p>
-        <h1 class="hero__title">מוזיקה<br />שנשמעת<br /><em>נכון.</em></h1>
+        <h1 class="hero__title">שיר לחתונה.<br />לבר מצווה.<br /><em>במתנה.</em></h1>
 
         <div class="hero__meta">
           <p>
-            הקלטה, מיקס, מאסטרינג והפקה מוזיקלית מלאה — מהרעיון הראשון ועד
-            המאסטר הסופי, תחת קורת גג אחת.
+            אני מתנאל, ואני מקליט, מפיק ומלטש את השיר שלכם בעצמי — מהשיחה
+            הראשונה ועד הקובץ שמתנגן באירוע. גם אם מעולם לא עמדתם מול מיקרופון.
           </p>
-          <a class="btn" href="contact.html">
-            הזמנת סשן <span class="btn__arrow" aria-hidden="true">←</span>
-          </a>
+          <div class="hero__actions">
+            <a
+              class="btn btn--solid"
+              href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#whatsapp" /></svg>
+              דברו איתי בוואטסאפ
+            </a>
+            <a class="link" href="contact.html">או השאירו פרטים</a>
+          </div>
         </div>
-      </div>
-
-      <p class="hero__scroll">גלול</p>
-    </section>
-
-    <!-- ══ 01 · SERVICES ══ -->
-    <section id="services" class="reveal">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">01 / שירותים</p>
-          <h2>מה קורה כאן<br />באולפן</h2>
-          <p>
-            כל שלב בתהליך נעשה אצלי, מה שאומר שהסאונד נשאר עקבי מההקלטה הראשונה
-            ועד הקובץ שעולה לרשתות.
-          </p>
-        </div>
-
-        <ul class="service-list">
-          <li class="service-row">
-            <span class="service-row__num">01</span>
-            <h3 class="service-row__title">הקלטות</h3>
-            <p class="service-row__desc">
-              הקלטת שירה וכלים בחדר מטופל אקוסטית, עם מיקרופונים ופרה-אמפים
-              שנבחרים לפי האמן ולא לפי מה שיש.
-            </p>
-          </li>
-          <li class="service-row">
-            <span class="service-row__num">02</span>
-            <h3 class="service-row__title">הפקה מוזיקלית</h3>
-            <p class="service-row__desc">
-              מסקיצה בטלפון לשיר גמור — עיבוד, בחירת כלים, נגנים ותפיסה כוללת
-              של איך השיר צריך להרגיש.
-            </p>
-          </li>
-          <li class="service-row">
-            <span class="service-row__num">03</span>
-            <h3 class="service-row__title">פלייבקים</h3>
-            <p class="service-row__desc">
-              פלייבקים מדויקים לכל ז'אנר, בנויים להופעה חיה ולשימוש חוזר בכל
-              טונליות שתצטרך.
-            </p>
-          </li>
-          <li class="service-row">
-            <span class="service-row__num">04</span>
-            <h3 class="service-row__title">מיקס ומאסטרינג</h3>
-            <p class="service-row__desc">
-              איזון, מרחב וליטוש סופי — כדי שהשיר יישמע חזק ונקי גם באוזניות
-              וגם ברמקול של הרכב.
-            </p>
-          </li>
-        </ul>
       </div>
     </section>
 
-    <!-- ══ 02 · PORTFOLIO ══ -->
+    <!-- ══ LISTEN ══ -->
     <section id="portfolio" class="reveal">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">02 / תיק עבודות</p>
           <h2>האזינו</h2>
           <p>הפקות שיצאו מהאולפן. לחצו על הגל כדי לדלג לכל נקודה בשיר.</p>
         </div>
 
         <div class="tracks">
-          <article class="track" data-audio="assets/audio/song1.mp3">
-            <button class="play-btn" aria-label="נגן / עצור">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path class="icon-play" d="M5 3l16 9-16 9z" />
-                <path class="icon-pause" d="M6 4h4v16H6zM14 4h4v16h-4z" />
-              </svg>
-            </button>
-            <div class="track__body">
-              <div class="track__head">
-                <h3 class="track__title">שיר מקורי — הפקה מלאה</h3>
-                <span class="track__artist">יהודה כהן</span>
-              </div>
-              <div class="waveform"></div>
-              <p class="track__time">
-                <span class="current-time">0:00</span> /
-                <span class="duration">0:00</span>
-              </p>
-            </div>
-          </article>
-
-          <article class="track" data-audio="assets/audio/song2.mp3">
-            <button class="play-btn" aria-label="נגן / עצור">
+          <article
+            class="track"
+            data-audio="assets/audio/song2.mp3"
+            data-peaks="assets/audio/song2.peaks.json"
+          >
+            <button
+              class="play-btn"
+              type="button"
+              aria-label="נגן: קאבר חתונה — פסנתר ושירה"
+              aria-pressed="false"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path class="icon-play" d="M5 3l16 9-16 9z" />
                 <path class="icon-pause" d="M6 4h4v16H6zM14 4h4v16h-4z" />
@@ -167,94 +153,191 @@
               <div class="waveform"></div>
               <p class="track__time">
                 <span class="current-time">0:00</span> /
-                <span class="duration">0:00</span>
+                <span class="duration">3:28</span>
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="track"
+            data-audio="assets/audio/song1.mp3"
+            data-peaks="assets/audio/song1.peaks.json"
+          >
+            <button
+              class="play-btn"
+              type="button"
+              aria-label="נגן: שיר מקורי — הפקה מלאה"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path class="icon-play" d="M5 3l16 9-16 9z" />
+                <path class="icon-pause" d="M6 4h4v16H6zM14 4h4v16h-4z" />
+              </svg>
+            </button>
+            <div class="track__body">
+              <div class="track__head">
+                <h3 class="track__title">שיר מקורי — הפקה מלאה</h3>
+                <span class="track__artist">יהודה כהן</span>
+              </div>
+              <div class="waveform"></div>
+              <p class="track__time">
+                <span class="current-time">0:00</span> /
+                <span class="duration">3:23</span>
               </p>
             </div>
           </article>
         </div>
+
+        <div class="inline-cta">
+          <p>רוצים שגם השיר שלכם יישמע ככה?</p>
+          <a
+            class="btn btn--solid"
+            href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#whatsapp" /></svg>
+            דברו איתי בוואטסאפ
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- ══ 03 · GALLERY ══ -->
+    <!-- ══ HOW IT WORKS ══ -->
+    <section id="process" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <h2>איך זה<br />עובד</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <h3 class="step__title">מדברים</h3>
+            <p class="step__desc">
+              שולחים הודעה ומספרים על האירוע ועל השיר. אחזור אליכם עם זמינות
+              והצעת מחיר, בדרך כלל תוך 24 שעות.
+            </p>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <h3 class="step__title">מקליטים</h3>
+            <p class="step__desc">
+              מגיעים לאולפן ושרים. לא צריך ניסיון: אני לצדכם לאורך כל ההקלטה.
+            </p>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <h3 class="step__title">מקבלים שיר מוכן</h3>
+            <p class="step__desc">
+              אני מפיק, מערבב ומלטש את השיר בעצמי, ושולח לכם קובץ מוכן להשמעה.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══ SERVICES ══ -->
+    <section id="services" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <h2>מה אפשר<br />להקליט כאן</h2>
+          <p>
+            כל שלב בתהליך נעשה אצלי, מה שאומר שהסאונד נשאר עקבי מההקלטה הראשונה
+            ועד הקובץ הסופי.
+          </p>
+        </div>
+
+        <ul class="service-list">
+          <li class="service-row">
+            <h3 class="service-row__title">הקלטה</h3>
+            <p class="service-row__desc">
+              שירה וכלים בחדר מטופל אקוסטית. אני מכוון אתכם תוך כדי, טייק אחרי
+              טייק.
+            </p>
+          </li>
+          <li class="service-row">
+            <h3 class="service-row__title">הפקה מוזיקלית</h3>
+            <p class="service-row__desc">
+              מסקיצה בטלפון לשיר גמור. עיבוד, כלים ונגנים, ואיך השיר צריך
+              להרגיש.
+            </p>
+          </li>
+          <li class="service-row">
+            <h3 class="service-row__title">פלייבקים וקריוקי</h3>
+            <p class="service-row__desc">
+              פלייבק מדויק לשירה באירוע או בהופעה, בכל סולם שנוח לכם, וגם
+              <a class="link" href="karaoke.html">הפקות קריוקי</a>.
+            </p>
+          </li>
+          <li class="service-row">
+            <h3 class="service-row__title">מיקס ומאסטרינג</h3>
+            <p class="service-row__desc">
+              הליטוש הסופי, כדי שהשיר יישמע חזק ונקי ברמקולים של האולם,
+              באוזניות וברכב.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
     <section id="gallery" class="reveal">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">03 / החלל</p>
           <h2>האולפן<br />מבפנים</h2>
         </div>
 
         <div class="gallery-grid">
           <figure class="gallery-item">
-            <img
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: קונסולת הקלטה באולפן Matanel Studio">
+              <img
               src="assets/photos/studio_console.jpg"
               alt="קונסולת הקלטה באולפן Matanel Studio"
               loading="lazy"
             />
+            </button>
           </figure>
           <figure class="gallery-item">
-            <img
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: תא הקלטה מקצועי">
+              <img
               src="assets/photos/vocal_booth.jpg"
               alt="תא הקלטה מקצועי"
               loading="lazy"
             />
+            </button>
           </figure>
           <figure class="gallery-item">
-            <img
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: כלי נגינה באולפן">
+              <img
               src="assets/photos/instruments.jpg"
               alt="כלי נגינה באולפן"
               loading="lazy"
             />
+            </button>
           </figure>
           <figure class="gallery-item">
-            <img
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: חדר ההקלטות">
+              <img
               src="assets/photos/Recording Room.jpg"
               alt="חדר ההקלטות"
               loading="lazy"
             />
+            </button>
           </figure>
           <figure class="gallery-item">
-            <img
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: ציוד הקלטה מקצועי">
+              <img
               src="assets/photos/Equipment.jpg"
               alt="ציוד הקלטה מקצועי"
               loading="lazy"
             />
+            </button>
           </figure>
           <figure class="gallery-item">
-            <img src="assets/photos/piano.jpg" alt="פסנתר באולפן" loading="lazy" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ 04 · TESTIMONIALS ══ -->
-    <section id="testimonials" class="reveal">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">04 / המלצות</p>
-          <h2>מה אומרים</h2>
-        </div>
-
-        <div class="quotes">
-          <figure class="quote">
-            <blockquote>
-              חוויה מדהימה. הסאונד יצא בדיוק כמו שדמיינו — מקצוען אמיתי שיודע
-              להוציא את המיטב מכל אמן.
-            </blockquote>
-            <figcaption>יוסי א.</figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>
-              האווירה באולפן כל כך נעימה, זה עזר לנו להשתחרר ולתת ביצועים
-              מעולים. ממליצה בחום.
-            </blockquote>
-            <figcaption>נועה ש.</figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>
-              ציוד ברמה הכי גבוהה שיש, והתוצאה מדברת בעד עצמה. המיקס והמאסטרינג
-              פשוט מושלמים.
-            </blockquote>
-            <figcaption>דוד ט.</figcaption>
+            <button class="gallery-open" type="button" aria-label="הגדלת תמונה: פסנתר באולפן">
+              <img src="assets/photos/piano.jpg" alt="פסנתר באולפן" loading="lazy" />
+            </button>
           </figure>
         </div>
       </div>
@@ -265,7 +348,7 @@
       <div class="container">
         <div class="footer-top">
           <p class="footer-cta">
-            יש לך שיר בראש?<br /><a href="contact.html">בוא נקליט אותו.</a>
+            יש לכם שיר בראש?<br /><a href="contact.html">בואו נקליט אותו.</a>
           </p>
 
           <div class="social-links">
@@ -316,12 +399,24 @@
     </footer>
 
     <!-- ══ LIGHTBOX ══ -->
-    <div id="lightbox">
-      <button id="lightbox-close" aria-label="סגור">&times;</button>
-      <img id="lightbox-img" src="" alt="" />
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="תמונה מוגדלת">
+      <button id="lightbox-close" type="button" aria-label="סגירה">
+        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#close" /></svg>
+      </button>
     </div>
 
-    <script src="https://unpkg.com/wavesurfer.js@7"></script>
-    <script src="assets/script.js"></script>
+    <!-- ══ MOBILE WHATSAPP ══ -->
+    <a
+      class="wa-float"
+      href="https://wa.me/972539655012?text=היי%20מתנאל,%20אשמח%20לשמוע%20על%20הקלטת%20שיר"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#whatsapp" /></svg>
+      דברו איתי בוואטסאפ
+    </a>
+
+    <script defer src="https://unpkg.com/wavesurfer.js@7.12.12/dist/wavesurfer.min.js"></script>
+    <script defer src="assets/script.js"></script>
   </body>
 </html>

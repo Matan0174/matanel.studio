@@ -604,6 +604,101 @@ a[href*="wa.me"]:not(.btn):not(.topbar__wa):not(.wa-float) {
 }
 
 /* --------------------------------------------------------------------------
+   8b. STUDIO HAZE — ambient smoke and light behind the home page.
+   Every animation is 4s alternate, so the whole scene repeats every 8s.
+   -------------------------------------------------------------------------- */
+.studio-haze {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.studio-haze__smoke,
+.studio-haze__beam {
+  position: absolute;
+  will-change: transform;
+}
+
+.studio-haze__smoke {
+  top: -35vmax;
+  right: -40vmax;
+  width: 120vmax;
+  aspect-ratio: 1;
+  opacity: 0.18;
+  background: center / cover no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0 0.9 1.5 0 0 0 -0.5'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+  mask-image: radial-gradient(closest-side, #000 35%, transparent);
+  animation:
+    haze-drift-x 4s ease-in-out infinite alternate,
+    haze-drift-y 4s ease-in-out -2s infinite alternate,
+    haze-swirl 4s ease-in-out -1s infinite alternate;
+}
+
+.studio-haze__smoke--warm {
+  top: auto;
+  right: auto;
+  bottom: -50vmax;
+  left: -45vmax;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='4' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 0.91 0 0 0 0 0.31 0 0 0 0 0.24 1.6 0 0 0 -0.55'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation-direction: alternate-reverse;
+  animation-delay: -3s, -1s, -2s;
+}
+
+/* Stage-light wedge hanging from above the viewport */
+.studio-haze__beam {
+  top: -10vh;
+  left: 62%;
+  width: 90vmax;
+  height: 130vh;
+  margin-left: -45vmax;
+  background: conic-gradient(
+    from 162deg at 50% 0%,
+    transparent,
+    rgba(255, 236, 220, 0.08) 18deg,
+    transparent 36deg
+  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent 90%);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent 90%);
+  transform-origin: 50% 0;
+  animation: haze-sweep 4s ease-in-out infinite alternate;
+}
+
+.studio-haze__beam--warm {
+  left: 22%;
+  background: conic-gradient(
+    from 165deg at 50% 0%,
+    transparent,
+    rgba(232, 80, 60, 0.07) 15deg,
+    transparent 30deg
+  );
+  animation-direction: alternate-reverse;
+}
+
+@keyframes haze-drift-x {
+  from { translate: -3vmax 0; }
+  to { translate: 3vmax 0; }
+}
+
+@keyframes haze-drift-y {
+  from { transform: translateY(-2.5vmax); }
+  to { transform: translateY(2.5vmax); }
+}
+
+@keyframes haze-swirl {
+  from { rotate: -4deg; scale: 1; }
+  to { rotate: 4deg; scale: 1.08; }
+}
+
+@keyframes haze-sweep {
+  from { rotate: -9deg; }
+  to { rotate: 9deg; }
+}
+
+/* --------------------------------------------------------------------------
    9. SERVICES — full-bleed accent band, round icon badges
    -------------------------------------------------------------------------- */
 #services {
